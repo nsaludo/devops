@@ -1,0 +1,11 @@
+#!/bin/bash -xe
+adduser e91user
+echo e91user 'ALL=(ALL) NOPASSWD:ALL'>>/etc/sudoers.d/e91user
+mkdir /home/e91user/.ssh
+echo ssh-rsa <put your pub key here>
+chown -R e91user.e91user /home/e91user/.ssh
+chmod 700 /home/e91user/.ssh
+chmod 600 /home/e91user/.ssh/authorized_keys
+hostnamectl set-hostname  ec2_1.harvard.edu --pretty
+hostnamectl set-hostname  ec2_1.harvard.edu --static
+
